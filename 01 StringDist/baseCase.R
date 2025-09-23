@@ -83,48 +83,4 @@ correlation_matrix <- all_results %>%
 
 kable(correlation_matrix, digits=3, caption="Матрица корреляции между метриками")
 
-# Детальный анализ для примера
-cat("\n")
-cat("==================================================\n")
-cat("ДЕТАЛЬНЫЙ АНАЛИЗ ДЛЯ ПАРЫ 'kitten' - 'sitting'\n")
-cat("==================================================\n")
-
-detailed_analysis <- function(string1, string2) {
-  cat("Строка 1:", string1, "\n")
-  cat("Строка 2:", string2, "\n")
-  cat("Длины:", nchar(string1), "и", nchar(string2), "символов\n\n")
-  
-  results <- compare_metrics(string1, string2)
-  
-  cat("Результаты для всех метрик:\n")
-  for (i in 2:ncol(results)) {
-    metric_name <- colnames(results)[i]
-    value <- results[1, i]
-    cat(sprintf("  %-20s: %s\n", metric_name, value))
-  }
-}
-
-detailed_analysis("kitten", "sitting")
-
-# Сводка по метрикам
-cat("\n")
-cat("==================================================\n")
-cat("СВОДНАЯ ИНФОРМАЦИЯ ПО МЕТРИКАМ\n")
-cat("==================================================\n")
-
-cat("Метрики редактирования:\n")
-cat("  - Levenshtein: минимальное количество операций редактирования\n")
-cat("  - Damerau-Levenshtein: включает транспозиции соседних символов\n")
-cat("  - Hamming: только для строк одинаковой длины\n\n")
-
-cat("N-граммные метрики:\n")
-cat("  - Jaccard: на основе пересечения множеств n-грамм\n")
-cat("  - Cosine: косинус угла между векторами n-грамм\n")
-cat("  - Q-gram: разность множеств n-грамм\n\n")
-
-cat("Специализированные метрики:\n")
-cat("  - Jaro: учитывает близость matching символов\n")
-cat("  - Jaro-Winkler: дополнительно учитывает общие префиксы\n")
-cat("  - LCS: на основе самой длинной общей подстроки\n")
-
 cat("\nАнализ завершен!\n")
